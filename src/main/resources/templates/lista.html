@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es"
+      xmlns="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Personas</title>
+</head>
+<body>
+    <div>
+        Conectado como: <strong sec:authentication="name">admin</strong>
+        (<span sec:authentication="principal.authorities">roles</span>)
+        <form th:action="@{/logout}" method="post" style="display:inline">
+            <button type="submit">Cerrar sesion</button>
+        </form>
+    </div>
+    <h1>Personas en el sistema</h1>
+
+    <a href="/nueva">+Agregar Persona</a>
+
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>ID</th><th>Nombre</th><th>Apellido</th><th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="persona : ${personas}">
+                <td th:text="${persona.id}"></td>
+                <td th:text="${persona.nombre}"></td>
+                <td th:text="${persona.apellido}"></td>
+                <td th:text="${persona.email}"></td>
+                <td>
+                    <a th:href="@{/editar/{id}(id=${persona.id})}">Editar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
