@@ -1,11 +1,17 @@
 /Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/PersonasApplication.java
 /Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/config/DataInitializer.java
 /Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/config/SecurityConfig.java
+/Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/controller/InicioController.java
 /Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/controller/LoginController.java
 /Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/controller/PersonaController.java
+/Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/controller/TelefonoController.java
 /Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/model/Persona.java
+/Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/model/Telefono.java
 /Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/model/Usuario.java
 /Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/repository/PersonaRepository.java
+/Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/repository/TelefonoRepository.java
 /Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/repository/UsuarioRepository.java
+/Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/security/LoginSuccessHandler.java
 /Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/security/UsuarioDetailsService.java
 /Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/service/PersonaService.java
+/Users/gilderlopez/Documents/personas/src/main/java/com/hospital/personas/service/TelefonoService.java

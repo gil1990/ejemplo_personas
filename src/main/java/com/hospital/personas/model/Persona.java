@@ -1,11 +1,14 @@
 package com.hospital.personas.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue; 
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-
+import jakarta.persistence.OneToMany;
 //una entidad es una tabla 
 @Entity
 public class Persona {
@@ -17,6 +20,9 @@ public class Persona {
     private String nombre; 
     private String apellido; 
     private String email;
+
+    @OneToMany(mappedBy="persona", cascade= CascadeType.ALL, orphanRemoval=true)
+    private List<Telefono> telefonos = new ArrayList<>();
 
     public Persona(){}
 
@@ -51,5 +57,13 @@ public class Persona {
 
     public void setEmail(String email){
         this.email = email; 
+    }
+
+    public List<Telefono> getTelefonos(){
+        return telefonos;
+    }
+
+    public void setTelefonos(List<Telefono> telefonos){
+        this.telefonos = telefonos;
     }
 }

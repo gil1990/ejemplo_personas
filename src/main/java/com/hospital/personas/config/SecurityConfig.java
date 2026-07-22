@@ -47,7 +47,7 @@ public class SecurityConfig {
             )
             .exceptionHandling(ex -> ex.accessDeniedPage("/acceso-denegado"))
             .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()))
-            .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"));
+            .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**", "/telefono/**", "/eliminar/**"));
 
             return http.build();
     }

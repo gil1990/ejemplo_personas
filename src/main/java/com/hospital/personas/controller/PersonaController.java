@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping; 
 
 import com.hospital.personas.model.Persona;
-import com.hospital.personas.service.PersonaService; 
+import com.hospital.personas.service.PersonaService;
+ 
 
 @Controller
 public class PersonaController {
@@ -43,5 +44,12 @@ public class PersonaController {
         personaService.guardar(persona);
         return "redirect:/";
     }
+
+    @PostMapping("/eliminar/{id}")
+    public String eliminarPersona(@PathVariable Long id) {
+       personaService.eliminar(id);
+       return "redirect:/";
+    }
+    
     
 }

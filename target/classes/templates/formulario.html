@@ -7,7 +7,8 @@
 <body>
     <h1 th:text="${persona.id == null} ? 'Nueva persona' : 'Editar Persona'">Persona</h1>
 
-    <form action="/guardar" method="post" th:object="${persona}">
+    <form th:action="@{/guardar}" method="post" th:object="${persona}">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
         <input type="hidden" th:field="*{id}">
         
         <label>Nombre:</label>
@@ -19,8 +20,34 @@
         <label>Email:</label>
         <input type="email" th:field="*{email}"><br><br>
 
+        <div th:if="${persona.id == null}">
+            <label>Teléfono:</label>
+            <input type="text" th:field="*{telefonos[0].numero}" placeholder="Teléfono">
+            <br><br>
+        </div>
+
         <button type="submit">Guardar</button>
     </form>
+
+    <div th:if="${persona.id != null}">
+        <h3>Teléfonos</h3>
+        <ul>
+            <li th:each="tel : ${persona.telefonos}">
+                <span th:text="${tel.numero}"></span>
+                <form th:action="@{/telefono/eliminar/{id}/{personaId}(id=${tel.id}, personaId=${persona.id})}"
+                      method="post" style="display:inline">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                    <button type="submit">Eliminar</button>
+                </form>
+            </li>
+        </ul>
+
+        <form th:action="@{/telefono/agregar/{personaId}(personaId=${persona.id})}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <input type="text" name="numero" placeholder="Nuevo teléfono">
+            <button type="submit">Agregar teléfono</button>
+        </form>
+    </div>
 
     <br>
     <a href="/">Volver a la lista</a>

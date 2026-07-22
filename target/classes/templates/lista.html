@@ -20,7 +20,7 @@
     <table border="1" cellpadding="8">
         <thead>
             <tr>
-                <th>ID</th><th>Nombre</th><th>Apellido</th><th>Email</th>
+                <th>ID</th><th>Nombre</th><th>Apellido</th><th>Email</th><th>Teléfonos</th><th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -30,7 +30,17 @@
                 <td th:text="${persona.apellido}"></td>
                 <td th:text="${persona.email}"></td>
                 <td>
+                    <span th:if="${#lists.isEmpty(persona.telefonos)}">Sin telefonos</span>
+                    <ul th:unless="${#lists.isEmpty(persona.telefonos)}">
+                        <li th:each="telefono : ${persona.telefonos}"
+                            th:text="${telefono.numero}"></li>
+                    </ul>
+                </td>
+                <td>
                     <a th:href="@{/editar/{id}(id=${persona.id})}">Editar</a>
+                    <form th:action="@{eliminar/{id}(id=${persona.id})}" method="post" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Desea eliminar esta persona y todos sus telefonos?');">Eliminar</button>
+                    </form>
                 </td>
             </tr>
         </tbody>
